@@ -16,6 +16,7 @@
 
 ;; Graph Tour for Undirected = Eulerian Path
 
+
 (defn isConnected-BFShelper
 	"Given a root vertex, determines if all other vertices can be visited. Aside
 	from a root vertex, takes in a graph, map of [vertices visited], and a queue
@@ -57,3 +58,20 @@
     (and (isConnected graph) (or (= oddDeg 2) (= oddDeg 0)))
   )
 )
+
+;; Test cases:
+
+(= true (graphTour [[:a :b]]))
+
+(= false (graphTour [[:a :a] [:b :b]]))
+
+(= false (graphTour [[:a :b] [:a :b] [:a :c] [:c :a]
+               [:a :d] [:b :d] [:c :d]]))
+
+(= true (graphTour [[1 2] [2 3] [3 4] [4 1]]))
+
+(= true (graphTour [[:a :b] [:a :c] [:c :b] [:a :e]
+              [:b :e] [:a :d] [:b :d] [:c :e]
+              [:d :e] [:c :f] [:d :f]]))
+
+(= false (graphTour [[1 2] [2 3] [2 4] [2 5]]))
